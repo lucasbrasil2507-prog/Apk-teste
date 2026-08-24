@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brisol — Teste Final</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="loginScreen" class="screen">
+    <div class="card login-card">
+      <div class="logo">BRISOL</div>
+      <h1>Entrar</h1>
+      <p class="muted">Versão de teste com endpoints reais.</p>
+      <input id="user" placeholder="Usuário" value="67507">
+      <input id="pass" type="password" placeholder="Senha" value="teste">
+      <button id="loginBtn" class="primary">Entrar</button>
+      <p class="demo">Modo teste — autenticação local de demonstração</p>
+    </div>
+  </div>
+
+  <div id="rewardScreen" class="screen hidden">
+    <header class="topbar">
+      <b>BRISOL</b>
+      <div class="balance">🪙 <span id="balance">15</span></div>
+    </header>
+    <main class="reward-wrap">
+      <div class="card reward-card">
+        <div class="gift">🎁</div>
+        <h1>Moedas Grátis</h1>
+        <p class="muted">A cada 1 minuto você pode resgatar <b>500 moedas</b>.</p>
+        <div class="timer-ring">
+          <div>
+            <span id="timer">60</span>
+            <small>segundos</small>
+          </div>
+        </div>
+        <p class="status" id="status">Aguarde o contador terminar.</p>
+        <button id="claimBtn" class="primary" disabled>Resgatar 500 moedas</button>
+
+        <div class="info">
+          <div><span>ID</span><b>67507</b></div>
+          <div><span>Recompensa</span><b>+500</b></div>
+          <div><span>Intervalo</span><b>1 minuto</b></div>
+          <div><span>Saldo</span><b id="balance2">15</b></div>
+        </div>
+
+        <div class="info" style="margin-top:18px;text-align:left">
+          <div style="font-size:12px;color:#737b8c;margin-bottom:6px">Resposta do servidor</div>
+          <pre id="serverResponse" style="background:#f4f5f9;border-radius:12px;padding:12px;font-size:11px;max-height:180px;overflow:auto;white-space:pre-wrap;word-break:break-all">Aguardando...</pre>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
