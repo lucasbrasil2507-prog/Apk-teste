@@ -28,17 +28,35 @@ jobs:
         uses: android-actions/setup-android@v3
 
       - name: Install npm dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
 
-      - name: Add Capacitor Android platform
+      - name: Prepare web assets
         run: |
-          if [ ! -d android ]; then
-            npx cap add android
-          else
-            echo "Pasta android já existe"
+          rm -rf dist
+          mkdir -p dist
+
+          if [ ! -f index.html ]; then
+            echo "ERRO: index.html não encontrado na raiz do projeto."
+            echo "Arquivos encontrados:"
+            find . -maxdepth 2 -type f | sort | head -100
+            exit 1
           fi
 
-      - name: Sync web assets
+          cp index.html dist/
+
+          for item in assets css js images img fonts; do
+            if [ -e "$item" ]; then
+              cp -r "$item" dist/
+            fi
+          done
+
+          echo "Conteúdo do dist:"
+          find dist -maxdepth 2 -type f | sort
+
+      - name: Add Capacitor Android platform
+        run: npx cap add android
+
+      - name: Sync Capacitor
         run: npx cap sync android
 
       - name: Make gradlew executable
