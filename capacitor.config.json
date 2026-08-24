@@ -1,7 +1,7 @@
 {
   "appId": "com.brisol.teste",
   "appName": "Brisol Teste",
-  "webDir": "www",
+  "webDir": ".",
   "server": {
     "androidScheme": "https"
   },
