@@ -1,1 +1,14 @@
+- name: Prepare web assets
+  run: |
+    mkdir -p dist
+    cp -r index.html dist/
+    for item in assets css js images img fonts; do
+      if [ -e "$item" ]; then
+        cp -r "$item" dist/
+      fi
+    done
 
+    if [ ! -f dist/index.html ]; then
+      echo "ERRO: index.html não encontrado"
+      exit 1
+    fi
